@@ -7,5 +7,12 @@
   <body>
     <p>Base colour: {{base_color}}</p>
     <p>Palette type: {{palette_type}}</p>
+    <p>Colours: 
+      <ul>
+        {% for color in colors %}
+          <li>{{color}}</li>
+        {% endfor %}
+      </ul>
+    </p>
   </body>
 </html>
