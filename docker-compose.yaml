@@ -1,0 +1,43 @@
+version: "3.8"
+services:
+  service-1:
+    image: palette-generator-front
+    build: ./service-1-front-end
+    container_name: service-1
+    networks:
+      - application-network
+  service-2:
+    image: palette-generator-base-color-api
+    build: ./service-2-base-color-api
+    container_name: service-2
+    networks:
+      - application-network
+  service-3:
+    image: palette-generator-palette-type-api
+    build: ./service-3-palette-type-api
+    container_name: service-3
+    networks:
+      - application-network
+  service-4:
+    image: palette-generator-create-palette-api
+    build: ./service-4-create-palette-api
+    container_name: service-4
+    networks:
+      - application-network
+  nginx:
+    image: nginx:latest
+    container_name: nginx
+    networks:
+      - application-network
+    volumes:
+      - type: bind
+        source: ./nginx.conf
+        target: /etc/nginx/nginx.conf
+    ports:
+      - target: 80
+        published: 80
+        protocol: tcp
+    depends_on:
+      - service-1
+networks:
+  application-network:
