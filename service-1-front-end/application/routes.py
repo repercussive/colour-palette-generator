@@ -1,5 +1,6 @@
 from application import app
 from flask import render_template
+from colour import Color
 import requests
 
 @app.route('/')
@@ -15,5 +16,5 @@ def index():
       'home.html',
       base_color=base_color,
       palette_type=palette_type,
-      colors=palette['colors']
+      colors=[Color(color) for color in palette['colors']]
   )

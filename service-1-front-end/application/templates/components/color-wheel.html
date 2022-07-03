@@ -1,0 +1,72 @@
+<div class="color-wheel-wrapper">
+  <div class="color-wheel"></div>
+  <div class="color-wheel-center"></div>
+  {% for color in colors %}
+  <div 
+    class="color-marker"
+    style="
+      transform: 
+        rotate(calc({{color.get_hue() * 360}}deg - 70deg)) 
+        translate({{color.get_saturation() * 1/0.8 * 92.5}}px) 
+        rotate({{color.get_hue() * 360}}deg);
+      background-color: {{color}};
+      z-index: {{1 if color == base_color else 0}};"
+  ></div>
+  {% endfor %}
+</div>
+
+<style>
+  .color-marker {
+    position: absolute;
+    display: grid;
+    place-items: center;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    border: solid 3px white;
+    animation: fade-in forwards 500ms;
+  }
+
+  .color-wheel-wrapper {
+    height: 200px;
+    display: grid;
+    place-items: center;
+  }
+
+  .color-wheel-center {
+    position: absolute;
+    width: 180px;
+    height: 180px;
+    background: white;
+    border-radius: 50%;
+  }
+
+  .color-wheel {
+    width: 200px;
+    height: 200px;
+    opacity: 0.25;
+    background:
+      radial-gradient(
+        circle closest-side,
+        hsl(0,0%,100%),
+        hsl(0,0%,0%) 90%
+      ),
+      conic-gradient(
+        hsl(0deg,100%,50%),
+        hsl(30deg,100%,50%),
+        hsl(60deg,100%,50%),
+        hsl(90deg,100%,50%),
+        hsl(120deg,100%,50%),
+        hsl(150deg,100%,50%),
+        hsl(180deg,100%,50%),
+        hsl(210deg,100%,50%),
+        hsl(240deg,100%,50%),
+        hsl(270deg,100%,50%),
+        hsl(300deg,100%,50%),
+        hsl(330deg,100%,50%)
+      );
+      border: 5px solid #fff;
+      background-blend-mode: screen;
+      border-radius: 50%
+  }
+</style>
