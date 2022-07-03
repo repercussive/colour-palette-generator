@@ -5,4 +5,5 @@ import requests
 @app.route('/')
 def index():
     base_color = requests.get('http://service-2:5000/get_base_color').text
-    return render_template('home.html', base_color=base_color) 
+    palette_type = requests.get('http://service-3:5000/get_palette_type').text
+    return render_template('home.html', base_color=base_color, palette_type=palette_type)

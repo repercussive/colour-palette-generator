@@ -12,6 +12,12 @@ services:
     container_name: service-2
     networks:
       - application-network
+  service-3:
+    image: palette-generator-palette-type-api
+    build: ./service-3-palette-type-api
+    container_name: service-3
+    networks:
+      - application-network
   nginx:
     image: nginx:latest
     container_name: nginx
