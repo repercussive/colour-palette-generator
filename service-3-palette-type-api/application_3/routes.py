@@ -1,4 +1,4 @@
-from application import app
+from application_3 import app
 from random import choice
 
 palette_types = ['monochromatic', 'complementary', 'analogous', 'split-complementary']
