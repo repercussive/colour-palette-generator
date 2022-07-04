@@ -4,15 +4,52 @@
     <meta charset="UTF-8" />
     <title>Colour Palette Generator</title>
   </head>
+
   <body>
-    <p>Base colour: {{base_color}}</p>
-    <p>Palette type: {{palette_type}}</p>
-    <p>Colours: 
-      <ul>
-        {% for color in colors %}
-          <li>{{color}}</li>
-        {% endfor %}
-      </ul>
-    </p>
+    <h1>Colour Palette Generator</h1>
+    {% include "components/new-palette-button.html" %}
+    <br>
+    {% include "components/palette.html" %}
+    <br><br>
+    {% include "components/color-wheel.html" %}
+    <br>
+    {% include "components/palette-info.html" %}
   </body>
+
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap');
+
+    :root {
+      --color-bg: #ffffff;
+      --color-text: #313131;
+    }
+
+    html,
+    body {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin: 0.25rem;
+      margin-top: 4vh;
+      font-size: 16px;
+      font-family: Inter, Arial, Helvetica, sans-serif;
+      background-color: var(--color-bg);
+      color: var(--color-text);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    @keyframes fade-in {
+      from {
+        opacity: 0;
+      }
+      to {
+        opacity: 1;
+      }
+    }
+  </style>
 </html>
