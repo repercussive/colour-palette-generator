@@ -4,11 +4,11 @@ from flask_testing import TestCase
 
 class TestBase(TestCase):
   def create_app(self):
-      return app
+    return app
 
 class TestPaletteTypeApi(TestBase):
   def test_get_palette_type(self):
-      response = self.client.get(url_for('get_palette_type'))
-      palette_type = response.data.decode('utf-8')
-      assert palette_type in ['monochromatic', 'complementary', 'analogous', 'split-complementary']
+    response = self.client.get(url_for('get_palette_type'))
+    palette_type = response.data.decode('utf-8')
+    assert palette_type in ['monochromatic', 'complementary', 'analogous', 'split-complementary']
 
