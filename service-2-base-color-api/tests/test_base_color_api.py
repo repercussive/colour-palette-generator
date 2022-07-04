@@ -1,4 +1,4 @@
-from application import app
+from application_2 import app
 from flask import url_for
 from flask_testing import TestCase
 
