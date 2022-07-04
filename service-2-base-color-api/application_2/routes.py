@@ -1,4 +1,4 @@
-from application import app
+from application_2 import app
 from random import random
 from colour import Color
 
