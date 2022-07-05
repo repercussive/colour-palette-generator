@@ -33,4 +33,6 @@
 
 - name: Install Docker module for Python
   pip:
-    name: docker
+    name: 
+      - docker
+      - jsondiff
