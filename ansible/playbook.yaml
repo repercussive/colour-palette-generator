@@ -3,7 +3,7 @@
   roles: 
   - install-docker
 
-- hosts: swarm-manager
+- hosts: docker-swarm-manager
   become: true
   tasks:
     - name: Initialise swarm
@@ -11,7 +11,7 @@
         state: present
       register: swarm_info
 
-- hosts: swarm-workers
+- hosts: docker-swarm-workers
   become: true
   tasks:
     - name: Join swarm

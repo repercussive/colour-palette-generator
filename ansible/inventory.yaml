@@ -1,8 +1,8 @@
 all:
   children:
-    swarm-manager:
+    docker-swarm-manager:
       hosts:
-        swarm-manager:
-    swarm-workers:
+        10.182.0.2:
+    docker-swarm-workers:
       hosts:
-        swarm-worker:
+        10.182.0.3:
