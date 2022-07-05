@@ -6,3 +6,6 @@ all:
     swarm_workers:
       hosts:
         10.182.0.3:
+
+  vars:
+    ansible_user: jenkins
