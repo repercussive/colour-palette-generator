@@ -13,10 +13,10 @@
 
     - name: Deploy stack
       docker_stack:
-      state: present
-      name: palette-generator
-      compose:
-        - /home/jenkins/docker-compose.yaml
+        state: present
+        name: palette-generator
+        compose:
+          - /home/jenkins/docker-compose.yaml
 
 - hosts: swarm_workers
   become: true
