@@ -1,0 +1,22 @@
+- hosts: all
+  become: true
+  roles: 
+  - install-docker
+
+- hosts: swarm-manager
+  become: true
+  tasks:
+    - name: Initialise swarm
+      docker_swarm:
+        state: present
+      register: swarm_info
+
+- hosts: swarm-workers
+  become: true
+  tasks:
+    - name: Join swarm
+      docker_swarm:
+        state: join
+        advertise_addr: swarm-worker
+        join_token: "{{ hostvars['swarm-manager']['swarm_info']['swarm_facts']['JoinTokens']['Worker'] }}"
+        remote_addrs: [ 'swarm-manager:2377' ]
