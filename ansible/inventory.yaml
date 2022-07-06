@@ -2,10 +2,10 @@ all:
   children:
     swarm_manager:
       hosts:
-        10.182.0.2:
+        swarm-manager:
     swarm_workers:
       hosts:
-        10.182.0.3:
+        swarm-worker:
 
   vars:
     ansible_user: jenkins
