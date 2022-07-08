@@ -1,0 +1,29 @@
+- hosts: all
+  become: true
+  roles: 
+  - install-docker
+
+- hosts: swarm_manager
+  become: true
+  tasks:
+    - name: Initialise swarm
+      docker_swarm:
+        state: present
+      register: swarm_info
+
+    - name: Deploy stack
+      docker_stack:
+        state: present
+        name: palette-generator
+        compose:
+          - /home/jenkins/docker-compose.yaml
+
+- hosts: swarm_workers
+  become: true
+  tasks:
+    - name: Join swarm
+      docker_swarm:
+        state: join
+        advertise_addr: swarm-worker
+        join_token: "{{ hostvars['swarm-manager']['swarm_info']['swarm_facts']['JoinTokens']['Worker'] }}"
+        remote_addrs: [ 'swarm-manager:2377' ]
