@@ -28,7 +28,7 @@ The objective of this project was to develop an application using a service-orie
 - Google Cloud Platform virtual machines as cloud-based servers
 - Docker for containerisation
 - Docker Swarm for container orchestration
-- NGINX as a reverse proxy
+- Nginx as a reverse proxy
 
 ## Design
 
@@ -78,7 +78,7 @@ Here is the result of transforming the design above into the final working appli
 
 | ![image](https://user-images.githubusercontent.com/7796522/178018509-a022b1a1-3b9f-4af0-a8a1-dbcc1aec1300.png) | 
 |:--:| 
-| *The hex values for each colour are displayed. Also shown is the palette’s base colour, the palette type (in this case, split-complementary) as well as a visual representation of how the colours are positioned on the colour wheel.* |
+| *The hex values for each colour are displayed. Also shown are the palette’s base colour, the palette type (in this case, split-complementary) as well as a visual representation of how the colours are positioned on the colour wheel.* |
 
 ## Project tracking
 
@@ -98,7 +98,7 @@ Version control (with git) was used throughout the development of the project. I
 
 The project repo is hosted on GitHub. It not only acts as a backup for the project files, but also provides additional features, such as webhooks, which are a necessary part of the CI pipeline.
 
-The four primary services are written in Python. The web micro-framework Flask was used to implement the various APIs. I made heavy use of the [`colour`](https://pypi.org/project/colour/) module as this allows for easy manipulation of colours. I have used best practices to reduce code complexity and improve readability, such as loops and helper functions. See [the implementation for service 4](https://github.com/repercussive/colour-palette-generator/blob/1afbbe1729c148aa0894f72334bceea0a4ab5822/service-4-create-palette-api/application_4/routes.py). Notice that the colour harmony formulas have been implemented with extensibility in mind - if you wanted to add another formula, all you would have to do is add an entry to the `palette_offsets` dictionary.
+The four primary services are written in Python. The web micro-framework Flask was used to implement the various APIs. I made heavy use of the [`colour`](https://pypi.org/project/colour/) module as this allows for easy manipulation of colours. I have used best practices to reduce code complexity and improve readability, such as loops and helper functions. See [the implementation for the create palette API](https://github.com/repercussive/colour-palette-generator/blob/1afbbe1729c148aa0894f72334bceea0a4ab5822/service-4-create-palette-api/application_4/routes.py). Notice that the colour harmony formulas have been implemented with extensibility in mind - if you wanted to add another formula, all you would have to do is add an entry to the `palette_offsets` dictionary.
 
 Automatic testing, building and deployment were handled with Jenkins and Ansible; these will be covered in more detail later.
 
@@ -151,7 +151,7 @@ To give a more concrete example, something that I found tricky was deciphering l
 
 I have only implemented 4 colour harmony formulas (monochromatic, analogous, complementary and split-complementary), but others exist (such as triadic or tetradic). One simple way to develop this app further would be to implement these other types of colour palettes.
 
-A more ambitious development could involve the use of an SQL database to store the palettes that are generated. If this were combined with a user accounts system, users would be able to save palettes to access later.
+A more ambitious development could involve the use of an SQL database to store the palettes that are generated. If this were combined with a user accounts system, users would be able to save palettes to be accessed later.
 
 ## Acknowledgements
 
